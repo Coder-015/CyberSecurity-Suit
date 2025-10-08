@@ -97,7 +97,7 @@ public class SecuritySuite extends JFrame {
     }
 
     private void initializeUI() {
-        setTitle("Security Suite - All-in-One Security Tools");
+        setTitle("OutCore");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 700);
         setLocationRelativeTo(null);
@@ -164,7 +164,7 @@ public class SecuritySuite extends JFrame {
         header.setPreferredSize(new Dimension(getWidth(), 80));
 
         // Title
-        JLabel title = new JLabel("Security Suite");
+        JLabel title = new JLabel("OutCore - Security Suite");
         title.setFont(new Font("Segoe UI", Font.BOLD, 28));
         title.setForeground(Color.WHITE);
         title.setHorizontalAlignment(SwingConstants.LEFT);
