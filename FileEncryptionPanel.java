@@ -58,7 +58,7 @@ class FileEncryptionPanel extends JPanel {
         dragDropPanel.setPreferredSize(new Dimension(800, 120));
         dragDropPanel.setMaximumSize(new Dimension(800, 120));
 
-        dragDropLabel = new JLabel("🖱️ Drag & Drop Files or Folders Here", SwingConstants.CENTER);
+        dragDropLabel = new JLabel(" Drag & Drop Files or Folders Here", SwingConstants.CENTER);
         dragDropLabel.setFont(new Font("Segoe UI", Font.BOLD, 18));
         dragDropLabel.setForeground(primary);
 
@@ -115,8 +115,8 @@ class FileEncryptionPanel extends JPanel {
         buttonPanel.setPreferredSize(new Dimension(800, 60));
         buttonPanel.setMaximumSize(new Dimension(800, 60));
 
-        encryptButton = new JButton("🔒 Encrypt");
-        decryptButton = new JButton("🔓 Decrypt");
+        encryptButton = new JButton(" Encrypt");
+        decryptButton = new JButton(" Decrypt");
         styleButton(encryptButton, accent);
         styleButton(decryptButton, primary);
 
@@ -139,7 +139,7 @@ class FileEncryptionPanel extends JPanel {
         statusPanel.setPreferredSize(new Dimension(800, 300));
         statusPanel.setMaximumSize(new Dimension(800, 300));
 
-        JLabel statusLabel = new JLabel("📋 Status Log");
+        JLabel statusLabel = new JLabel(" Status Log");
         statusLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
         statusLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
@@ -169,8 +169,8 @@ class FileEncryptionPanel extends JPanel {
         contentPanel.add(statusPanel);
 
         log("Welcome to File Encryption Tool!");
-        log("📁 Select a file or folder to encrypt/decrypt");
-        log("💡 Tip: Use strong passwords for better security");
+        log(" Select a file or folder to encrypt/decrypt");
+        log(" Tip: Use strong passwords for better security");
     }
 
     private void setupDragAndDrop() {
@@ -185,12 +185,12 @@ class FileEncryptionPanel extends JPanel {
                     if (!droppedFiles.isEmpty()) {
                         File file = droppedFiles.get(0);
                         filePathField.setText(file.getAbsolutePath());
-                        dragDropLabel.setText("✅ File Selected: " + file.getName());
+                        dragDropLabel.setText(" File Selected: " + file.getName());
                         dragDropLabel.setForeground(new Color(46, 204, 113));
-                        log("📂 File selected via drag & drop: " + file.getName());
+                        log(" File selected via drag & drop: " + file.getName());
                     }
                 } catch (Exception ex) {
-                    log("❌ Error: " + ex.getMessage());
+                    log(" Error: " + ex.getMessage());
                 } finally {
                     resetDragDropLabel();
                 }
@@ -198,7 +198,7 @@ class FileEncryptionPanel extends JPanel {
 
             @Override
             public void dragEnter(DropTargetDragEvent dtde) {
-                dragDropLabel.setText("📥 Drop File Here!");
+                dragDropLabel.setText(" Drop File Here!");
                 dragDropLabel.setForeground(new Color(52, 152, 219));
             }
 
@@ -211,7 +211,7 @@ class FileEncryptionPanel extends JPanel {
 
     private void resetDragDropLabel() {
         Timer timer = new Timer(2000, e -> {
-            dragDropLabel.setText("🖱️ Drag & Drop Files or Folders Here");
+            dragDropLabel.setText(" Drag & Drop Files or Folders Here");
             dragDropLabel.setForeground(new Color(41, 128, 185));
         });
         timer.setRepeats(false);
@@ -226,7 +226,7 @@ class FileEncryptionPanel extends JPanel {
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File selected = chooser.getSelectedFile();
             filePathField.setText(selected.getAbsolutePath());
-            log("📂 Selected: " + selected.getName());
+            log(" Selected: " + selected.getName());
         }
     }
 
@@ -272,11 +272,11 @@ class FileEncryptionPanel extends JPanel {
                         processSingleFile(file, encrypt);
                     }
 
-                    publish(encrypt ? "✅ Encryption completed successfully!" :
-                            "✅ Decryption completed successfully!");
+                    publish(encrypt ? " Encryption completed successfully!" :
+                            " Decryption completed successfully!");
 
                 } catch (Exception e) {
-                    publish("❌ Error: " + e.getMessage());
+                    publish(" Error: " + e.getMessage());
                     throw e;
                 }
                 return null;
@@ -310,8 +310,8 @@ class FileEncryptionPanel extends JPanel {
         int totalFiles = countFiles(folder);
         int[] processedFiles = {0};
 
-        log((encrypt ? "🔒 Encrypting" : "🔓 Decrypting") + " folder: " + folder.getName());
-        log("📊 Total files: " + totalFiles);
+        log((encrypt ? " Encrypting" : " Decrypting") + " folder: " + folder.getName());
+        log(" Total files: " + totalFiles);
 
         SwingUtilities.invokeLater(() -> {
             progressBar.setIndeterminate(false);
@@ -335,7 +335,7 @@ class FileEncryptionPanel extends JPanel {
                 int progress = processedFiles[0];
                 SwingUtilities.invokeLater(() -> {
                     progressBar.setValue(progress);
-                    log("⏳ Progress: " + progress + "/" + totalFiles);
+                    log(" Progress: " + progress + "/" + totalFiles);
                 });
             }
         }
@@ -367,11 +367,11 @@ class FileEncryptionPanel extends JPanel {
             // Store original name for decryption
             originalNames.put(outputFile.getAbsolutePath(), inputFile.getName());
 
-            log("🔒 Encrypted: " + inputFile.getName() + " → " + outputFile.getName());
+            log(" Encrypted: " + inputFile.getName() + " → " + outputFile.getName());
 
             // Delete original file
             if (inputFile.delete()) {
-                log("🗑️ Original file deleted: " + inputFile.getName());
+                log(" Original file deleted: " + inputFile.getName());
             }
         } else {
             // Remove .encrypted extension
@@ -384,11 +384,11 @@ class FileEncryptionPanel extends JPanel {
             File outputFile = new File(outputPath);
 
             decryptFile(inputFile, outputFile, password);
-            log("🔓 Decrypted: " + inputFile.getName() + " → " + outputFile.getName());
+            log(" Decrypted: " + inputFile.getName() + " → " + outputFile.getName());
 
             // Delete encrypted file
             if (inputFile.delete()) {
-                log("🗑️ Encrypted file deleted: " + inputFile.getName());
+                log(" Encrypted file deleted: " + inputFile.getName());
             }
         }
     }
