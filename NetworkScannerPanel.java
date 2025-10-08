@@ -54,21 +54,20 @@ class NetworkScannerPanel extends JPanel {
         JPanel tipsPanel = createCardPanel(cardColor, 850, 180);
         tipsPanel.setLayout(new BorderLayout());
 
-        JLabel tipsTitle = new JLabel("💡 Beginner Tips - Understanding Ports");
+        JLabel tipsTitle = new JLabel(" Beginner Tips - Understanding Ports");
         tipsTitle.setFont(new Font("Segoe UI", Font.BOLD, 16));
         tipsTitle.setForeground(primary);
         tipsTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
         JTextArea tipsArea = new JTextArea();
-        tipsArea.setText("🔍 WHAT ARE PORTS?\n" +
+        tipsArea.setText(" WHAT ARE PORTS?\n" +
                 "• Ports are like doors on a computer where services run\n" +
                 "• Common ports: 80 (Web), 443 (Secure Web), 22 (SSH)\n" +
                 "• Open ports mean services are running and accessible\n" +
                 "• Closed ports mean no service is listening\n\n" +
-                "🎯 SCANNING TIPS:\n" +
+                " SCANNING TIPS:\n" +
                 "• Start with common ports (1-1000) for basic scan\n" +
                 "• Use specific IP ranges like 192.168.1.1-50\n" +
-                "• Green = Open, Red = Closed\n" +
                 "• Scan your own network first for practice");
         tipsArea.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         tipsArea.setEditable(false);
@@ -143,8 +142,8 @@ class NetworkScannerPanel extends JPanel {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
         buttonPanel.setOpaque(false);
 
-        scanButton = new JButton("🚀 Start Scan");
-        stopButton = new JButton("🛑 Stop Scan");
+        scanButton = new JButton(" Start Scan");
+        stopButton = new JButton(" Stop Scan");
         styleButton(scanButton, accent);
         styleButton(stopButton, danger);
         stopButton.setEnabled(false);
@@ -166,7 +165,7 @@ class NetworkScannerPanel extends JPanel {
         JPanel portInfoPanel = createCardPanel(cardColor, 850, 220);
         portInfoPanel.setLayout(new BorderLayout());
 
-        JLabel portInfoTitle = new JLabel("📚 Common Ports Reference Guide");
+        JLabel portInfoTitle = new JLabel(" Common Ports Reference Guide");
         portInfoTitle.setFont(new Font("Segoe UI", Font.BOLD, 16));
         portInfoTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
@@ -189,7 +188,7 @@ class NetworkScannerPanel extends JPanel {
         JPanel resultsPanel = createCardPanel(cardColor, 850, 300);
         resultsPanel.setLayout(new BorderLayout());
 
-        JLabel resultsTitle = new JLabel("📊 Scan Results");
+        JLabel resultsTitle = new JLabel(" Scan Results");
         resultsTitle.setFont(new Font("Segoe UI", Font.BOLD, 16));
         resultsTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
@@ -224,7 +223,7 @@ class NetworkScannerPanel extends JPanel {
         JPanel logPanel = createCardPanel(cardColor, 850, 250);
         logPanel.setLayout(new BorderLayout());
 
-        JLabel logLabel = new JLabel("📝 Scan Log");
+        JLabel logLabel = new JLabel(" Scan Log");
         logLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
         logLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
@@ -301,30 +300,30 @@ class NetworkScannerPanel extends JPanel {
     }
 
     private String getCommonPortsReference() {
-        return "▲ SECURE PORTS:\n" +
+        return " SECURE PORTS:\n" +
                 "• Port 22 (SSH) - Secure remote administration\n" +
                 "• Port 443 (HTTPS) - Encrypted web browsing\n" +
                 "• Port 993 (IMAPS) - Secure email access\n" +
                 "• Port 995 (POP3S) - Secure email retrieval\n\n" +
 
-                "● WEB PORTS:\n" +
+                " WEB PORTS:\n" +
                 "• Port 80 (HTTP) - Regular web browsing\n" +
                 "• Port 443 (HTTPS) - Secure web browsing\n" +
                 "• Port 8080 (HTTP-Alt) - Alternative web port\n" +
                 "• Port 8443 (HTTPS-Alt) - Alternative secure web\n\n" +
 
-                "✉ EMAIL PORTS:\n" +
+                " EMAIL PORTS:\n" +
                 "• Port 25 (SMTP) - Sending emails\n" +
                 "• Port 110 (POP3) - Receiving emails\n" +
                 "• Port 143 (IMAP) - Email access\n" +
                 "• Port 993/995 - Secure email ports\n\n" +
 
-                "■ DATABASE PORTS:\n" +
+                " DATABASE PORTS:\n" +
                 "• Port 1433 (SQL Server) - Microsoft database\n" +
                 "• Port 3306 (MySQL) - Popular database system\n" +
                 "• Port 5432 (PostgreSQL) - Advanced database\n\n" +
 
-                "☑ REMOTE ACCESS:\n" +
+                " REMOTE ACCESS:\n" +
                 "• Port 3389 (RDP) - Windows Remote Desktop\n" +
                 "• Port 5900 (VNC) - Virtual Network Computing";
     }
@@ -395,10 +394,10 @@ class NetworkScannerPanel extends JPanel {
         progressBar.setVisible(true);
         tableModel.setRowCount(0);
         logArea.setText("");
-        log("🚀 Starting network scan...");
-        log("📡 IP Range: " + ipRange);
-        log("🔌 Port Range: " + startPort + " to " + endPort);
-        log("💡 Tip: Open ports show services running on devices");
+        log(" Starting network scan...");
+        log(" IP Range: " + ipRange);
+        log(" Port Range: " + startPort + " to " + endPort);
+        log(" Tip: Open ports show services running on devices");
 
         executor = Executors.newFixedThreadPool(50);
 
@@ -425,7 +424,7 @@ class NetworkScannerPanel extends JPanel {
                             String service = getServiceName(currentPort);
                             String description = getPortDescription(currentPort);
                             addResult(currentIP, currentPort, "Open", service, description);
-                            log("✅ OPEN: " + currentIP + ":" + currentPort + " (" + service + ")");
+                            log(" OPEN: " + currentIP + ":" + currentPort + " (" + service + ")");
                         });
                     } catch (Exception e) {
                         // Port is closed or filtered
@@ -437,7 +436,7 @@ class NetworkScannerPanel extends JPanel {
                         progressBar.setValue(progress);
                         if (completedScans[0] == totalScans) {
                             stopScan();
-                            log("🎉 Scan completed! Found " + tableModel.getRowCount() + " open ports");
+                            log(" Scan completed! Found " + tableModel.getRowCount() + " open ports");
                         }
                     });
                 });
@@ -453,7 +452,7 @@ class NetworkScannerPanel extends JPanel {
         scanButton.setEnabled(true);
         stopButton.setEnabled(false);
         progressBar.setVisible(false);
-        log("🛑 Scan stopped by user");
+        log(" Scan stopped by user");
     }
 
     private List<String> parseIPRange(String ipRange) {
