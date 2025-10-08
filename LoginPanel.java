@@ -48,7 +48,7 @@ public class LoginPanel extends JPanel {
         header.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
         header.setPreferredSize(new Dimension(getWidth(), 70));
 
-        JLabel title = new JLabel("Security Suite");
+        JLabel title = new JLabel("OutCore - Security Suite");
         title.setFont(new Font("Segoe UI", Font.BOLD, 28));
         title.setForeground(Color.WHITE);
 
@@ -67,7 +67,7 @@ private JPanel createWelcomePanel() {
     contentPanel.setBackground(BACKGROUND_COLOR);
 
     // Welcome message
-    JLabel welcomeLabel = new JLabel("Welcome to Security Suite");
+    JLabel welcomeLabel = new JLabel("Welcome to OutCore");
     welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 32));
     welcomeLabel.setForeground(PRIMARY_COLOR);
     welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
