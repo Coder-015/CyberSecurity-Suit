@@ -162,13 +162,13 @@ class PasswordCheckerPanel extends JPanel {
         feedback.append("Password Length: ").append(pass.length()).append(" characters\n");
 
         if (score >= 80) {
-            feedback.append("✓ Excellent! This is a very strong password.\n");
+            feedback.append(" Excellent! This is a very strong password.\n");
         } else if (score >= 60) {
-            feedback.append("✓ Good password. Consider adding more complexity.\n");
+            feedback.append(" Good password. Consider adding more complexity.\n");
         } else if (score >= 40) {
-            feedback.append("⚠ Moderate strength. Should be improved.\n");
+            feedback.append(" Moderate strength. Should be improved.\n");
         } else {
-            feedback.append("✗ Weak password. Highly recommended to change.\n");
+            feedback.append(" Weak password. Highly recommended to change.\n");
         }
 
         feedbackArea.setText(feedback.toString());
@@ -218,37 +218,37 @@ class PasswordCheckerPanel extends JPanel {
         StringBuilder feedback = new StringBuilder();
 
         if (password.length() < 8) {
-            feedback.append("✗ Password is too short (minimum 8 characters recommended)\n");
+            feedback.append(" Password is too short (minimum 8 characters recommended)\n");
         } else {
-            feedback.append("✓ Good password length\n");
+            feedback.append(" Good password length\n");
         }
 
         if (!Pattern.compile("[a-z]").matcher(password).find()) {
-            feedback.append("✗ Add lowercase letters\n");
+            feedback.append(" Add lowercase letters\n");
         }
 
         if (!Pattern.compile("[A-Z]").matcher(password).find()) {
-            feedback.append("✗ Add uppercase letters\n");
+            feedback.append(" Add uppercase letters\n");
         }
 
         if (!Pattern.compile("[0-9]").matcher(password).find()) {
-            feedback.append("✗ Add numbers\n");
+            feedback.append(" Add numbers\n");
         }
 
         if (!Pattern.compile("[^a-zA-Z0-9]").matcher(password).find()) {
-            feedback.append("✗ Add special characters\n");
+            feedback.append(" Add special characters\n");
         }
 
         if (Pattern.compile("(.)\\1{2,}").matcher(password).find()) {
-            feedback.append("✗ Avoid repeated characters\n");
+            feedback.append(" Avoid repeated characters\n");
         }
 
         if (Pattern.compile("(123|abc|password|admin)").matcher(password.toLowerCase()).find()) {
-            feedback.append("✗ Avoid common patterns and words\n");
+            feedback.append(" Avoid common patterns and words\n");
         }
 
         if (feedback.length() == 0) {
-            feedback.append("✓ All checks passed! Excellent password.\n");
+            feedback.append(" All checks passed! Excellent password.\n");
         }
 
         return feedback.toString();
